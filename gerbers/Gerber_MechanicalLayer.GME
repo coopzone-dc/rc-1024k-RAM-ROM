@@ -1,0 +1,21 @@
+G04 Layer: MechanicalLayer*
+G04 EasyEDA v6.5.40, 2024-07-01 11:27:10*
+G04 c1f3bc4e761f40e689e8ea0538afd347,7243cdaf381449fe92b9da44aa7c23a7,10*
+G04 Gerber Generator version 0.2*
+G04 Scale: 100 percent, Rotated: No, Reflected: No *
+G04 Dimensions in millimeters *
+G04 leading zeros omitted , absolute positions ,4 integer and 5 decimal *
+%FSLAX45Y45*%
+%MOMM*%
+
+%ADD10C,0.0500*%
+
+%LPD*%
+D10*
+X10541000Y-4470400D02*
+G01*
+X304800Y-4470400D01*
+X304800Y-5943600D01*
+X10541000Y-5943600D01*
+X10541000Y-4470400D01*
+M02*
