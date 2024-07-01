@@ -1,7 +1,8 @@
 This project was based on this original work:
 https://github.com/PickledDog/rc-1024k
+Many thanks the the author for all the hard work.
 
-The original electronics design remain the same, this version has a ne pcb layout. The main difference being it's now RCBUS instead of RCBUS.
+The original electronics design remain the same, this version has a new pcb layout. The main difference being it's now RCBUS instead of RCBUS.
 
 # rc-1024k
  512K+512K RAM/ROM card for RCBUS
