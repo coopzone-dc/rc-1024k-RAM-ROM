@@ -1,20 +1,25 @@
+This project was based on this original work:
+https://github.com/PickledDog/rc-1024k
+
+The original electronics design remain the same, this version has a ne pcb layout. The main difference being it's now RCBUS instead of RCBUS.
+
 # rc-1024k
- 512K+512K RAM/ROM card for RC2014
-![Assembled PD109](/img/assembled.jpg)
+ 512K+512K RAM/ROM card for RCBUS
+![Assembled](/img/assembled.png)
 
 ## Overview
-This RC2014-compatible board provides RAM and flash ROM, software-pageable in 32k pages. 16 ROM and 16 RAM pages may be paged into the lower 32k of Z80 memory. This paging scheme is compatible with Wayne Warthen's [RomWBW](https://github.com/wwarthen/RomWBW).
+This RCBUS-compatible board provides RAM and flash ROM, software-pageable in 32k pages. 16 ROM and 16 RAM pages may be paged into the lower 32k of Z80 memory. This paging scheme is compatible with Wayne Warthen's [RomWBW](https://github.com/wwarthen/RomWBW).
 
 ## Memory details
 For ROM, a SST39SF040 512k x 8 flash chip is used. It can be programmed in-place using Will Sowerbutts' FLASH4 utility (included with RomWBW). For RAM, an AS6C4008 512k x 8 SRAM is used, providing 512K of addressable memory. Both are divided into 32k pages, and any page of either chip can be paged into the lower 32k of the address space. The upper 32k is permanently mapped to the last page of the RAM chip.
 
 ## Paging
-Upon reset, the first page of the ROM is mapped to the lower 32k. If left alone, the board will behave like any 32k ROM+32k RAM RC2014 system. A config register is used to set the currently mapped page, presented as an I/O device at 0x78 (the address used by most "large" Z80 memory systems). The low nibble sets the page number (0-15), and high bit 7 selects the chip (0 for ROM, 1 for RAM).
+Upon reset, the first page of the ROM is mapped to the lower 32k. If left alone, the board will behave like any 32k ROM+32k RAM RCBUS system. A config register is used to set the currently mapped page, presented as an I/O device at 0x78 (the address used by most "large" Z80 memory systems). The low nibble sets the page number (0-15), and high bit 7 selects the chip (0 for ROM, 1 for RAM).
 
 The port address and layout are chosen to be (mostly) compatible with the [RetroBrew SBC](https://www.retrobrewcomputers.org/doku.php?id=boards:sbc:sbc_v2:sbc_v2-003). The SBC has separate ROM and RAM registers (on 0x78 and 0x7C); this board uses a single register for both, which can be written to from either address.
 
 ## Firmware
-Many [RC2014 ROM images](https://github.com/RC2014Z80/RC2014/tree/master/ROMs) can be used (selecting the right image for your serial board), but some will require modification to accommodate the different paging system. The 32k BASIC images work unmodified. Stephen C Cousins' excellent [Small Computer Monitor](https://smallcomputercentral.wordpress.com/small-computer-monitor/) can be used as well - choose the R3 configuration. CP/M loading *won't work* without code changes.
+Many [RCBUS ROM images](https://github.com/RCBUSZ80/RCBUS/tree/master/ROMs) can be used (selecting the right image for your serial board), but some will require modification to accommodate the different paging system. The 32k BASIC images work unmodified. Stephen C Cousins' excellent [Small Computer Monitor](https://smallcomputercentral.wordpress.com/small-computer-monitor/) can be used as well - choose the R3 configuration. CP/M loading *won't work* without code changes.
 
 But most importantly, this board is compatible with [RomWBW](https://github.com/wwarthen/RomWBW), providing several CP/M versions, ROM applications, and maximized free application memory. It will need to be built from source with configuration changes, although this is fairly straightforward (RomWBW includes its entire build toolchain in the source tree). The build process is covered in [this page](https://github.com/wwarthen/RomWBW/blob/master/Source/ReadMe.txt) from the RomWBW documentation (including Linux and Mac instructions). An example image can be found in the [firmware](/firmware) directory.
 
