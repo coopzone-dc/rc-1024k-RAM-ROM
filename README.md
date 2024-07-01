@@ -4,6 +4,11 @@ Many thanks the the author for all the hard work.
 
 The original electronics design remain the same, this version has a new pcb layout. The main difference being it's now RCBUS instead of RCBUS.
 
+The original used KiCad, this version was created using EasyEDA and is pubished here:
+
+https://oshwlab.com/mycoopzone/rcbus-512k-ram-512k-rom
+
+
 # rc-1024k
  512K+512K RAM/ROM card for RCBUS
 ![Assembled](/img/assembled.png)
