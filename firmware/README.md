@@ -1,4 +1,4 @@
-This dirrectory has been udated to include Version 3.4 RomWBW
+This directory has been udated to include Version 3.4 RomWBW
 
 # Firmware
 This directory contains firmware source and binaries for the board. As of now, it only contains changes to RomWBW.
